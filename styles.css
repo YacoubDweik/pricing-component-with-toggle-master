@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --gradient: linear-gradient(
+    145deg,
+    hsl(236, 72%, 79%),
+    hsl(237, 63%, 64%)
+  );
+  --bg-color: hsl(240, 78%, 98%);
+  --switch-text: hsl(234, 14%, 74%);
+  --text-color: hsl(233, 13%, 49%);
+  --price-color: hsl(232, 13%, 33%);
+  --text-sm: 1.5rem;
+  --text-md: 1.75rem;
+  --text-la: 3.125rem;
+  --text-xl: 5.425rem;
+  /* font size= 15px */
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Montserrat";
+  font-weight: 700;
+  background-image: url(./images/bg-top.svg);
+  background-repeat: no-repeat;
+  background-position: 40vw -4rem;
+  background-color: var(--bg-color);
+}
+
+.container {
+  width: calc(100% - 48px);
+  margin: 70px auto;
+  text-align: center;
+  color: var(--text-color);
+  font-size: var(--text-sm);
+}
+
+.container__title {
+  font-weight: 700;
+  font-size: var(--text-la);
+}
+
+.container__switch {
+  margin: 42px 0 75px;
+  color: var(--switch-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+.container__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--text-la);
+  position: relative;
+}
+
+/* Toggle Switch */
+input[type="checkbox"] {
+  display: none;
+}
+
+.toggle {
+  display: inline-block;
+  width: 56px;
+  height: 32px;
+  background-image: var(--gradient);
+  border-radius: 20px;
+  position: absolute;
+  top: -101px;
+  left: calc(50% - 28px);
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.15s;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(27.5px, 3.5px);
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:checked + .toggle::before {
+  transform: translate(3.5px, 3.5px);
+}
+
+.toggle:hover {
+  opacity: 0.5;
+}
+
+/* cards */
+.card {
+  padding: 34px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.plan {
+  font-size: var(--text-md);
+}
+
+.price-box {
+  display: block;
+  font-size: var(--text-la);
+  margin-top: 34px;
+}
+
+.dollar {
+  display: inline-block;
+  font-size: var(--text-md);
+  transform: translate(5px, -5px);
+}
+
+.card .price::after {
+  content: "19.99";
+}
+
+input[type="checkbox"]:checked ~ .card .price::after {
+  content: "199.99";
+}
+
+.card.violet .price::after {
+  content: "29.99";
+}
+
+input[type="checkbox"]:checked
+  ~ .card.violet
+  .price::after {
+  content: "299.99";
+}
+
+.card:last-child .price::after {
+  content: "39.99";
+}
+
+input[type="checkbox"]:checked
+  ~ .card:last-child
+  .price::after {
+  content: "399.99";
+}
+
+ul {
+  display: block;
+  list-style: none;
+  margin: 40px 0;
+}
+
+li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--switch-text);
+}
+
+li:first-child {
+  border-top: 1px solid var(--switch-text);
+}
+
+.plan-details {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  background-image: var(--gradient);
+  color: white;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.plan-details:hover {
+  border-color: var(--text-color);
+  background: white;
+  color: hsl(237, 63%, 64%);
+}
+
+.violet {
+  background-image: var(--gradient);
+  color: white;
+}
+
+.violet .plan-details {
+  background: white;
+  color: hsl(237, 63%, 64%);
+  transition: 0.1s;
+}
+
+.violet .plan-details:hover {
+  border-color: white;
+  background: transparent;
+  color: white;
+}
+
+@media (min-width: 830px) {
+  .container {
+    margin: 70px auto 103px;
+  }
+  .container__switch {
+    margin: 42px 0 64px;
+  }
+  .container__body {
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+  .card {
+    width: min(50%, 350px);
+  }
+  .violet {
+    padding: 58px 34px;
+  }
+  .toggle {
+    top: -90px;
+  }
+  .price-box {
+    font-size: var(--text-xl);
+  }
+  .dollar {
+    font-size: var(--text-la);
+    transform: translate(0, -10px);
+  }
+}
